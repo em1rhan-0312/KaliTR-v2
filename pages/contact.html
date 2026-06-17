@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İletişim - KaliTR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <i class="fas fa-dragon"></i> <span>KaliTR</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Ana Sayfa</a></li>
+      <li><a href="tools.html">Araçlar</a></li>
+      <li><a href="installation.html">Kurulum</a></li>
+      <li><a href="commands.html">Komutlar</a></li>
+      <li><a href="contact.html" class="active">İletişim</a></li>
+      <li><a href="https://www.kali.org" target="_blank">Resmi Site</a></li>
+      <li><button id="themeToggle" class="theme-toggle" aria-label="Tema Değiştir"><i class="fas fa-sun"></i></button></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-bg">
+      <div class="gradient-orb"></div>
+      <div class="gradient-orb"></div>
+      <div class="page-header-grid"></div>
+    </div>
+    <div class="page-header-content">
+      <div class="breadcrumb">
+        <a href="../index.html">Ana Sayfa</a>
+        <i class="fas fa-chevron-right" style="font-size:10px"></i>
+        <span>İletişim</span>
+      </div>
+      <h1><i class="fas fa-envelope"></i> İletişim</h1>
+      <p>Sorularınız, önerileriniz veya geri bildirimleriniz için bize ulaşın. WhatsApp kanalımıza katılın veya forumumuzda paylaşım yapın!</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Bizimle İletişime Geçin</h2>
+        <p>Kali Linux hakkında sorularınız mı var? Araç kurulumu, kullanımı veya güvenlik testleriyle ilgili her konuda size yardımcı olmaktan mutluluk duyarız. Aşağıdaki kanallardan bize ulaşabilirsiniz.</p>
+
+        <div class="contact-methods">
+          <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
+            <div class="cm-icon" style="background:rgba(37,211,102,0.12);color:#25d366"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <h4>WhatsApp Kanalı</h4>
+              <p>Kanala Katıl</p>
+            </div>
+          </a>
+          <a href="https://kalitr.boards.net/" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
+            <div class="cm-icon" style="background:rgba(54,123,240,0.12);color:var(--accent)"><i class="fas fa-comments"></i></div>
+            <div>
+              <h4>Forum</h4>
+              <p>kalitr.boards.net</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@atlas.0312" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
+            <div class="cm-icon" style="background:rgba(0,0,0,0.08);color:#000"><i class="fab fa-tiktok"></i></div>
+            <div>
+              <h4>TikTok</h4>
+              <p>@atlas.0312</p>
+            </div>
+          </a>
+          <a href="https://github.com/em1rhan-0312" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
+            <div class="cm-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <h4>GitHub</h4>
+              <p>github.com/em1rhan-0312</p>
+            </div>
+          </a>
+          <a href="https://www.kali.org/docs/" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
+            <div class="cm-icon" style="background:rgba(168,85,247,0.12);color:var(--purple)"><i class="fas fa-book"></i></div>
+            <div>
+              <h4>Resmi Dokümantasyon</h4>
+              <p>kali.org/docs</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="info-box info" style="margin-bottom:24px">
+          <i class="fas fa-info-circle"></i>
+          <p><strong>Not:</strong> Hızlı yanıt için <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" style="color:var(--primary)">WhatsApp kanalımıza</a> veya <a href="https://kalitr.boards.net/" target="_blank" style="color:var(--primary)">forumumuza</a> göz atın.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Adınız</label>
+            <input type="text" id="name" placeholder="Adınızı girin" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-posta</label>
+            <input type="email" id="email" placeholder="E-posta adresiniz" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Konu</label>
+          <select id="subject">
+            <option value="">Konu seçin</option>
+            <option value="soru">Soru / Bilgi</option>
+            <option value="kurulum">Kurulum Yardımı</option>
+            <option value="arac">Araç Önerisi</option>
+            <option value="hata">Hata Bildirimi</option>
+            <option value="diger">Diğer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mesajınız</label>
+          <textarea id="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
+          <i class="fas fa-paper-plane"></i> Mesajı Gönder
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.kali.org" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+      <a href="https://www.tiktok.com/@atlas.0312" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://github.com/em1rhan-0312" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://kalitr.boards.net/" target="_blank" aria-label="Forum"><i class="fas fa-comments"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Ana Sayfa</a>
+      <a href="tools.html">Araçlar</a>
+      <a href="installation.html">Kurulum</a>
+      <a href="commands.html">Komutlar</a>
+      <a href="contact.html">İletişim</a>
+      <a href="https://kalitr.boards.net/" target="_blank">Forum</a>
+      <a href="https://www.kali.org" target="_blank">Resmi Site</a>
+    </div>
+    <p>Bu site bilgilendirme amaçlıdır. Tüm hakları <a href="https://www.kali.org" target="_blank">Kali Linux</a>'a aittir.</p>
+    <p style="margin-top:8px;font-size:12px">&copy; 2026 KaliTR Bilgi Platformu</p>
+  </footer>
+
+  <div class="toast" id="toast">Mesajınız başarıyla gönderildi!</div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // ─── FORM ───
+    const form = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toast.classList.add('show');
+      form.reset();
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    });
+  </script>
+</body>
+</html>

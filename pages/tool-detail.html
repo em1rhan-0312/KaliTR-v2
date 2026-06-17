@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Araç Detayı - KaliTR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <i class="fas fa-dragon"></i> <span>KaliTR</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Ana Sayfa</a></li>
+      <li><a href="tools.html" class="active">Araçlar</a></li>
+      <li><a href="installation.html">Kurulum</a></li>
+      <li><a href="commands.html">Komutlar</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+      <li><a href="https://www.kali.org" target="_blank">Resmi Site</a></li>
+      <li><button id="themeToggle" class="theme-toggle" aria-label="Tema Değiştir"><i class="fas fa-sun"></i></button></li>
+    </ul>
+  </nav>
+
+  <div class="tool-detail" id="toolDetail"></div>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.kali.org" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+      <a href="https://www.tiktok.com/@atlas.0312" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://github.com/em1rhan-0312" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://kalitr.boards.net/" target="_blank" aria-label="Forum"><i class="fas fa-comments"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Ana Sayfa</a>
+      <a href="tools.html">Araçlar</a>
+      <a href="installation.html">Kurulum</a>
+      <a href="commands.html">Komutlar</a>
+      <a href="contact.html">İletişim</a>
+      <a href="https://kalitr.boards.net/" target="_blank">Forum</a>
+      <a href="https://www.kali.org" target="_blank">Resmi Site</a>
+    </div>
+    <p>Bu site bilgilendirme amaçlıdır. Tüm hakları <a href="https://www.kali.org" target="_blank">Kali Linux</a>'a aittir.</p>
+    <p style="margin-top:8px;font-size:12px">&copy; 2026 KaliTR Bilgi Platformu</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // ─── TOOL DETAIL ───
+    const params = new URLSearchParams(window.location.search);
+    const toolId = params.get('tool');
+    const container = document.getElementById('toolDetail');
+
+    if (!toolId || !getToolById(toolId)) {
+      container.innerHTML = `
+        <div style="text-align:center;padding:80px 20px">
+          <i class="fas fa-exclamation-triangle" style="font-size:48px;color:var(--orange);margin-bottom:16px"></i>
+          <h1 style="margin-bottom:12px">Araç Bulunamadı</h1>
+          <p style="color:var(--text-dim);margin-bottom:24px">Aradığınız araç mevcut değil veya yanlış bir bağlantı kullandınız.</p>
+          <a href="tools.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Araçlara Dön</a>
+        </div>
+      `;
+    } else {
+      const tool = getToolById(toolId);
+
+      const features = tool.features.map(f => `<li>${f}</li>`).join('');
+      const tags = tool.tags.map(tag =>
+        `<span class="tag ${tool.tagColor || ''}">${tag}</span>`
+      ).join('');
+
+      const usageHtml = tool.usage.map(u => `
+        <div class="code-block">
+          <div class="code-header">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="lang">${u.title}</span>
+          </div>
+          <pre><code>${u.code}</code></pre>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="breadcrumb" style="display:flex;gap:8px;align-items:center;margin-bottom:24px;font-size:14px;color:var(--text-muted)">
+          <a href="../index.html" style="color:var(--text-dim);text-decoration:none">Ana Sayfa</a>
+          <i class="fas fa-chevron-right" style="font-size:10px"></i>
+          <a href="tools.html" style="color:var(--text-dim);text-decoration:none">Araçlar</a>
+          <i class="fas fa-chevron-right" style="font-size:10px"></i>
+          <span style="color:var(--primary)">${tool.name}</span>
+        </div>
+
+        <div class="tool-detail-header">
+          <div class="detail-icon" style="background:${tool.bg};color:${tool.color}">
+            <i class="fas ${tool.icon}"></i>
+          </div>
+          <div class="detail-info">
+            <h1>${tool.name}</h1>
+            <p style="color:var(--text-dim);margin-bottom:12px">${tool.desc}</p>
+            <div class="detail-tags">${tags}</div>
+          </div>
+        </div>
+
+        <div class="tool-detail-body">
+          <p style="font-size:16px;line-height:1.8">${tool.fullDesc}</p>
+
+          <h2><i class="fas fa-check-circle"></i> Özellikler</h2>
+          <ul>${features}</ul>
+
+          <h2><i class="fas fa-download"></i> Kurulum</h2>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="lang">Terminal</span>
+            </div>
+            <pre><code><span class="prompt">$</span> ${tool.install}</code></pre>
+          </div>
+
+          <div class="info-box info">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Not:</strong> Kali Linux'da çoğu araç önceden yüklenmiş olarak gelir. Eksik olması durumunda yukarıdaki komut ile kurabilirsiniz.</p>
+          </div>
+
+          <h2><i class="fas fa-terminal"></i> Kullanım Örnekleri</h2>
+          ${usageHtml}
+
+          <div class="info-box warning">
+            <i class="fas fa-shield-halved"></i>
+            <p><strong>Yasal Uyarı:</strong> Bu araçları yalnızca kendi sistemlerinizde veya yazılı izin aldığınız sistemlerde kullanın. İzinsiz kullanım yasa dışıdır.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+          <a href="tools.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Tüm Araçlara Dön
+          </a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

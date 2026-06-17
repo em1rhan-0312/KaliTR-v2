@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Araçlar - KaliTR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <i class="fas fa-dragon"></i> <span>KaliTR</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Ana Sayfa</a></li>
+      <li><a href="tools.html" class="active">Araçlar</a></li>
+      <li><a href="installation.html">Kurulum</a></li>
+      <li><a href="commands.html">Komutlar</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+      <li><a href="https://www.kali.org" target="_blank">Resmi Site</a></li>
+      <li><button id="themeToggle" class="theme-toggle" aria-label="Tema Değiştir"><i class="fas fa-sun"></i></button></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-bg">
+      <div class="gradient-orb"></div>
+      <div class="gradient-orb"></div>
+      <div class="page-header-grid"></div>
+    </div>
+    <div class="page-header-content">
+      <div class="breadcrumb">
+        <a href="../index.html">Ana Sayfa</a>
+        <i class="fas fa-chevron-right" style="font-size:10px"></i>
+        <span>Araçlar</span>
+      </div>
+      <h1><i class="fas fa-tools"></i> Kali Linux Araçları</h1>
+      <p>600'den fazla güvenlik aracı arasından en popüler olanları keşfedin.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Araç adı ile ara..." />
+    </div>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">Tümü</button>
+      <button class="filter-btn" data-filter="bilgi">Bilgi Toplama</button>
+      <button class="filter-btn" data-filter="vulnerability">Zafiyet Analizi</button>
+      <button class="filter-btn" data-filter="exploit">Sömürü</button>
+      <button class="filter-btn" data-filter="password">Parola</button>
+      <button class="filter-btn" data-filter="wireless">Kablosuz</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="forensic">Adli Bilişim</button>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid"></div>
+  </section>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.kali.org" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+      <a href="https://www.tiktok.com/@atlas.0312" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://github.com/em1rhan-0312" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://kalitr.boards.net/" target="_blank" aria-label="Forum"><i class="fas fa-comments"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Ana Sayfa</a>
+      <a href="tools.html">Araçlar</a>
+      <a href="installation.html">Kurulum</a>
+      <a href="commands.html">Komutlar</a>
+      <a href="contact.html">İletişim</a>
+      <a href="https://kalitr.boards.net/" target="_blank">Forum</a>
+      <a href="https://www.kali.org" target="_blank">Resmi Site</a>
+    </div>
+    <p>Bu site bilgilendirme amaçlıdır. Tüm hakları <a href="https://www.kali.org" target="_blank">Kali Linux</a>'a aittir.</p>
+    <p style="margin-top:8px;font-size:12px">&copy; 2026 KaliTR Bilgi Platformu</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    setToolsBasePath('tool-detail.html');
+    const grid = document.getElementById('toolsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    let currentFilter = 'all';
+    let currentPage = 1;
+    let currentData = [];
+
+    function filterAndRender(page) {
+      page = page || 1;
+      currentPage = page;
+      const query = searchInput.value.toLowerCase().trim();
+      let data = getToolsByCategory(currentFilter);
+      if (query) {
+        data = data.filter(t =>
+          t.name.toLowerCase().includes(query) ||
+          t.desc.toLowerCase().includes(query) ||
+          t.tags.some(tag => tag.toLowerCase().includes(query))
+        );
+      }
+      currentData = data;
+
+      renderTools(grid, data, page);
+
+      if (data.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-dim)"><i class="fas fa-search" style="font-size:40px;margin-bottom:16px;display:block;color:var(--text-muted)"></i><p style="font-size:18px;font-weight:600;margin-bottom:8px;color:var(--text)">Araç bulunamadı</p><p>Farklı bir arama terimi deneyin veya filtreyi değiştirin.</p></div>';
+      }
+
+      grid.querySelectorAll('.page-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = parseInt(btn.dataset.page);
+          filterAndRender(p);
+          grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        filterAndRender(1);
+      });
+    });
+
+    searchInput.addEventListener('input', () => filterAndRender(1));
+
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
+    if (catParam) {
+      filterBtns.forEach(btn => {
+        if (btn.dataset.filter === catParam) btn.click();
+      });
+    } else {
+      filterAndRender(1);
+    }
+  </script>
+</body>
+</html>

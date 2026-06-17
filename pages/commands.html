@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temel Komutlar - KaliTR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <i class="fas fa-dragon"></i> <span>KaliTR</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Ana Sayfa</a></li>
+      <li><a href="tools.html">Araçlar</a></li>
+      <li><a href="installation.html">Kurulum</a></li>
+      <li><a href="commands.html" class="active">Komutlar</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+      <li><a href="https://www.kali.org" target="_blank">Resmi Site</a></li>
+      <li><button id="themeToggle" class="theme-toggle" aria-label="Tema Değiştir"><i class="fas fa-sun"></i></button></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-bg">
+      <div class="gradient-orb"></div>
+      <div class="gradient-orb"></div>
+      <div class="page-header-grid"></div>
+    </div>
+    <div class="page-header-content">
+      <div class="breadcrumb">
+        <a href="../index.html">Ana Sayfa</a>
+        <i class="fas fa-chevron-right" style="font-size:10px"></i>
+        <span>Temel Komutlar</span>
+      </div>
+      <h1><i class="fas fa-terminal"></i> Temel Komutlar</h1>
+      <p>Kali Linux'da sıkça kullanılan temel terminal komutları ve açıklamaları.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <h2><i class="fas fa-network-wired"></i> Ağ Komutları</h2>
+      <p>Ağ yapılandırması, bağlantı testi ve izleme için kullanılan komutlar.</p>
+    </div>
+    <div class="commands-table-wrapper">
+      <table class="commands-table">
+        <thead>
+          <tr>
+            <th>Komut</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ip a</code></td>
+            <td>Tüm ağ arayüzlerini ve IP adreslerini gösterir</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>ip link set eth0 up/down</code></td>
+            <td>Ağ arayüzünü aktif/pasif yap</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>ping -c 4 8.8.8.8</code></td>
+            <td>Hedefe ICMP paketi göndererek bağlantı testi yapar</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>traceroute hedef.com</code></td>
+            <td>Hedefe giden yoldaki tüm yönlendiricileri gösterir</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>netstat -tulpn</code></td>
+            <td>Dinlemedeki portları ve bağlı servisleri listeler</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>ss -tulwn</code></td>
+            <td>Netstat'a alternatif, soket istatistiklerini gösterir</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>curl -I hedef.com</code></td>
+            <td>HTTP header bilgilerini alır</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>wget http://hedef.com/dosya</code></td>
+            <td>Web'den dosya indirir</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>dig hedef.com</code></td>
+            <td>DNS sorgusu yapar</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+          <tr>
+            <td><code>nslookup hedef.com</code></td>
+            <td>DNS adres çözümlemesi yapar</td>
+            <td><span class="cmd-tag network">Ağ</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2><i class="fas fa-cog"></i> Sistem Komutları</h2>
+      <p>Sistem bilgisi, işlem yönetimi ve kaynak kullanımını gösteren komutlar.</p>
+    </div>
+    <div class="commands-table-wrapper">
+      <table class="commands-table">
+        <thead>
+          <tr>
+            <th>Komut</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>uname -a</code></td>
+            <td>Tüm sistem bilgilerini gösterir (kernel, mimari, OS)</td>
+            <td><span class="cmd-tag system">Sistem</span></td>
+          </tr>
+          <tr>
+            <td><code>cat /etc/os-release</code></td>
+            <td>İşletim sistemi sürüm bilgisini gösterir</td>
+            <td><span class="cmd-tag system">Sistem</span></td>
+          </tr>
+          <tr>
+            <td><code>htop</code></td>
+            <td>Gelişmiş işlem yöneticisi (etkileşimli)</td>
+            <td><span class="cmd-tag process">İşlem</span></td>
+          </tr>
+          <tr>
+            <td><code>ps aux</code></td>
+            <td>Tüm çalışan işlemleri listeler</td>
+            <td><span class="cmd-tag process">İşlem</span></td>
+          </tr>
+          <tr>
+            <td><code>kill -9 PID</code></td>
+            <td>Belirtilen PID'ye sahip işlemi zorla sonlandırır</td>
+            <td><span class="cmd-tag process">İşlem</span></td>
+          </tr>
+          <tr>
+            <td><code>free -h</code></td>
+            <td>RAM kullanımını insan tarafından okunabilir formatta gösterir</td>
+            <td><span class="cmd-tag system">Sistem</span></td>
+          </tr>
+          <tr>
+            <td><code>df -h</code></td>
+            <td>Disk bölümlerinin kullanımını gösterir</td>
+            <td><span class="cmd-tag disk">Disk</span></td>
+          </tr>
+          <tr>
+            <td><code>du -sh *</code></td>
+            <td>Dizinlerin boyutunu gösterir</td>
+            <td><span class="cmd-tag disk">Disk</span></td>
+          </tr>
+          <tr>
+            <td><code>uptime</code></td>
+            <td>Sistemin ne kadar süredir çalıştığını gösterir</td>
+            <td><span class="cmd-tag system">Sistem</span></td>
+          </tr>
+          <tr>
+            <td><code>dmesg</code></td>
+            <td>Kernel mesajlarını gösterir (donanım hataları için)</td>
+            <td><span class="cmd-tag system">Sistem</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2><i class="fas fa-folder"></i> Dosya İşlemleri</h2>
+      <p>Dosya ve dizin yönetimi için temel komutlar.</p>
+    </div>
+    <div class="commands-table-wrapper">
+      <table class="commands-table">
+        <thead>
+          <tr>
+            <th>Komut</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ls -la</code></td>
+            <td>Dosyaları detaylı listeler (gizli dosyalar dahil)</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>cd /dizin/yolu</code></td>
+            <td>Belirtilen dizine geçiş yapar</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>cp kaynak hedef</code></td>
+            <td>Dosya veya dizin kopyalar</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>mv kaynak hedef</code></td>
+            <td>Dosya veya dizin taşır / yeniden adlandırır</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>rm -rf dizin</code></td>
+            <td>Dizini ve içindeki her şeyi siler (dikkatli kullanın)</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>mkdir yeni_dizin</code></td>
+            <td>Yeni bir dizin oluşturur</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>touch dosya.txt</code></td>
+            <td>Boş bir dosya oluşturur veya zaman damgasını günceller</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>cat dosya.txt</code></td>
+            <td>Dosya içeriğini ekrana yazdırır</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>nano dosya.txt</code></td>
+            <td>Nano editörü ile dosyayı düzenler</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+          <tr>
+            <td><code>grep "kelime" dosya</code></td>
+            <td>Dosyada belirtilen kelimeyi arar</td>
+            <td><span class="cmd-tag file">Dosya</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2><i class="fas fa-lock"></i> Yetki ve Paket Yönetimi</h2>
+      <p>Kullanıcı yetkileri ve paket yönetimi komutları.</p>
+    </div>
+    <div class="commands-table-wrapper">
+      <table class="commands-table">
+        <thead>
+          <tr>
+            <th>Komut</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>sudo komut</code></td>
+            <td>Root yetkileriyle komut çalıştırır</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>sudo -i</code></td>
+            <td>Root shell'ine geçiş yapar</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>chmod 755 dosya</code></td>
+            <td>Dosya yetkilerini değiştirir</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>chown kullanici:grup dosya</code></td>
+            <td>Dosya sahibini değiştirir</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>adduser kullanici</code></td>
+            <td>Yeni kullanıcı oluşturur</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>usermod -aG sudo kullanici</code></td>
+            <td>Kullanıcıyı sudo grubuna ekler</td>
+            <td><span class="cmd-tag permission">Yetki</span></td>
+          </tr>
+          <tr>
+            <td><code>apt update</code></td>
+            <td>Paket listesini günceller</td>
+            <td><span class="cmd-tag package">Paket</span></td>
+          </tr>
+          <tr>
+            <td><code>apt install paket</code></td>
+            <td>Yeni paket kurar</td>
+            <td><span class="cmd-tag package">Paket</span></td>
+          </tr>
+          <tr>
+            <td><code>apt remove paket</code></td>
+            <td>Paketi kaldırır (konfigürasyon dosyalarını silmez)</td>
+            <td><span class="cmd-tag package">Paket</span></td>
+          </tr>
+          <tr>
+            <td><code>apt autoremove</code></td>
+            <td>Gereksiz paketleri temizler</td>
+            <td><span class="cmd-tag package">Paket</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2><i class="fas fa-history"></i> Kali Linux'a Özel Komutlar</h2>
+      <p>Sadece Kali Linux'da bulunan veya sık kullanılan özel komutlar.</p>
+    </div>
+    <div class="commands-table-wrapper">
+      <table class="commands-table">
+        <thead>
+          <tr>
+            <th>Komut</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>kali-tools-top10</code></td>
+            <td>En popüler 10 Kali aracını listeler/kurar</td>
+            <td><span class="cmd-tag package">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>kali-tools-list</code></td>
+            <td>Kategoriye göre araçları listeler</td>
+            <td><span class="cmd-tag package">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>airmon-ng</code></td>
+            <td>Wi-Fi arayüzünü monitor mode'a alır</td>
+            <td><span class="cmd-tag network">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>msfconsole</code></td>
+            <td>Metasploit Framework konsolunu başlatır</td>
+            <td><span class="cmd-tag process">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>service postgresql start</code></td>
+            <td>PostgreSQL veritabanını başlatır (Metasploit için)</td>
+            <td><span class="cmd-tag system">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>leafpad</code></td>
+            <td>Hafif bir metin düzenleyici açar</td>
+            <td><span class="cmd-tag file">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>sherlock kullanici_adi</code></td>
+            <td>OSINT ile kullanıcı adını sosyal medyada arar</td>
+            <td><span class="cmd-tag network">Kali</span></td>
+          </tr>
+          <tr>
+            <td><code>hash-identifier</code></td>
+            <td>Hash türünü tanımlamaya yardımcı olur</td>
+            <td><span class="cmd-tag file">Kali</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.kali.org" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+      <a href="https://www.tiktok.com/@atlas.0312" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://github.com/em1rhan-0312" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://kalitr.boards.net/" target="_blank" aria-label="Forum"><i class="fas fa-comments"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Ana Sayfa</a>
+      <a href="tools.html">Araçlar</a>
+      <a href="installation.html">Kurulum</a>
+      <a href="commands.html">Komutlar</a>
+      <a href="contact.html">İletişim</a>
+      <a href="https://kalitr.boards.net/" target="_blank">Forum</a>
+      <a href="https://www.kali.org" target="_blank">Resmi Site</a>
+    </div>
+    <p>Bu site bilgilendirme amaçlıdır. Tüm hakları <a href="https://www.kali.org" target="_blank">Kali Linux</a>'a aittir.</p>
+    <p style="margin-top:8px;font-size:12px">&copy; 2026 KaliTR Bilgi Platformu</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
