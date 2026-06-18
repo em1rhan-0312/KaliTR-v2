@@ -49,7 +49,7 @@
     <div class="contact-grid">
       <div class="contact-info">
         <h2>Bizimle İletişime Geçin</h2>
-        <p>Kali Linux hakkında sorularınız mı var? Araç kurulumu, kullanımı veya güvenlik testleriyle ilgili her konuda size yardımcı olmaktan mutluluk duyarız. Aşağıdaki kanallardan bize ulaşabilirsiniz.</p>
+        <p>Kali Linux hakkında sorularınız mı var? 155+ aracın kurulumu, kullanımı veya güvenlik testleriyle ilgili her konuda size yardımcı olmaktan mutluluk duyarız. Aşağıdaki kanallardan bize ulaşabilirsiniz.</p>
 
         <div class="contact-methods">
           <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" class="contact-method" style="text-decoration:none;color:inherit">
@@ -90,35 +90,37 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/jinglelot@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" id="nextUrl" name="_next" value="">
         <div class="info-box info" style="margin-bottom:24px">
           <i class="fas fa-info-circle"></i>
           <p><strong>Not:</strong> Hızlı yanıt için <a href="https://whatsapp.com/channel/0029Vb7aKWbL2ATxiYt8e52f" target="_blank" style="color:var(--primary)">WhatsApp kanalımıza</a> veya <a href="https://kalitr.boards.net/" target="_blank" style="color:var(--primary)">forumumuza</a> göz atın.</p>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="name">Adınız</label>
-            <input type="text" id="name" placeholder="Adınızı girin" required />
+            <label for="name">Adınız Soyadınız</label>
+            <input type="text" name="name" id="name" placeholder="Adınızı girin" required />
           </div>
           <div class="form-group">
             <label for="email">E-posta</label>
-            <input type="email" id="email" placeholder="E-posta adresiniz" required />
+            <input type="email" name="email" id="email" placeholder="E-posta adresiniz" required />
           </div>
         </div>
         <div class="form-group">
           <label for="subject">Konu</label>
-          <select id="subject">
-            <option value="">Konu seçin</option>
-            <option value="soru">Soru / Bilgi</option>
-            <option value="kurulum">Kurulum Yardımı</option>
-            <option value="arac">Araç Önerisi</option>
-            <option value="hata">Hata Bildirimi</option>
-            <option value="diger">Diğer</option>
+          <select name="konu" id="subject">
+            <option value="Genel">Konu seçin</option>
+            <option value="Soru - Bilgi">Soru / Bilgi</option>
+            <option value="Kurulum Yardimi">Kurulum Yardımı</option>
+            <option value="Arac Onerisi">Araç Önerisi</option>
+            <option value="Hata Bildirimi">Hata Bildirimi</option>
+            <option value="Diger">Diğer</option>
           </select>
         </div>
         <div class="form-group">
           <label for="message">Mesajınız</label>
-          <textarea id="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+          <textarea name="message" id="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
           <i class="fas fa-paper-plane"></i> Mesajı Gönder
@@ -153,16 +155,14 @@
 
   <script src="../js/main.js"></script>
   <script>
-    // ─── FORM ───
-    const form = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    document.getElementById('nextUrl').value = window.location.origin + window.location.pathname + '?success=true';
+    if (window.location.search.includes('success=true')) {
+      toast.textContent = 'Mesajınız başarıyla gönderildi!';
       toast.classList.add('show');
-      form.reset();
-      setTimeout(() => toast.classList.remove('show'), 3000);
-    });
+      setTimeout(() => toast.classList.remove('show'), 5000);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   </script>
 </body>
 </html>

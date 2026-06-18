@@ -136,11 +136,26 @@
         </div>
 
         <div style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+          <div id="relatedTools" style="margin-bottom:32px">
+            <h2 style="font-size:22px;font-weight:700;margin-bottom:20px;text-align:center"><i class="fas fa-link"></i> Benzer Araçlar</h2>
+            <div class="featured-tools" id="relatedToolsGrid"></div>
+          </div>
           <a href="tools.html" class="btn btn-outline">
             <i class="fas fa-arrow-left"></i> Tüm Araçlara Dön
           </a>
         </div>
       `;
+
+      // ─── RELATED TOOLS ───
+      const related = toolsData
+        .filter(t => t.id !== tool.id && t.cat.some(c => tool.cat.includes(c)))
+        .slice(0, 8);
+      if (related.length > 0) {
+        setToolsBasePath('tool-detail.html');
+        renderTools(document.getElementById('relatedToolsGrid'), related);
+      } else {
+        document.getElementById('relatedTools').style.display = 'none';
+      }
     }
   </script>
 </body>
